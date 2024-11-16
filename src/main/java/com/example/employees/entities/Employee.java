@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.Collections;
 import java.util.List;
 
 @Entity
@@ -39,8 +40,7 @@ public class Employee {
     private List<Salary> salaries;
 
     public List<Salary> getSalaries() {
-        //  TODO - return an immutable copy of the salaries list is a potential performance issue!
-        return List.copyOf(salaries);
+        return Collections.unmodifiableList(salaries);
     }
 
     public void setSalaries(List<Salary> salaries) {
@@ -52,8 +52,7 @@ public class Employee {
     private List<Title> titles;
 
     public List<Title> getTitles() {
-        //  TODO - return an immutable copy of the titles list is a potential performance issue!
-        return List.copyOf(titles);
+        return Collections.unmodifiableList(titles);
     }
 
     public void setTitles(List<Title> title) {
